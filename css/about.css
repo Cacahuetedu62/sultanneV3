@@ -1,0 +1,327 @@
+/* Styles spécifiques à la page à propos */
+.about-hero {
+    padding: 150px 8% 50px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--color-muted);
+    margin-bottom: 50px;
+}
+
+/* Section introduction */
+.about-intro {
+    padding: 0 8% 100px;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: row; /* Assure l'affichage horizontal */
+    gap: 60px;
+    align-items: flex-start; /* Aligne au début plutôt qu'au centre */
+}
+
+.about-image {
+    flex: 1;
+    max-width: 45%; /* Limite la largeur de l'image */
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 500px;
+    background-color: var(--color-card);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--color-accent) 0%, transparent 70%);
+    opacity: 0.3;
+}
+
+.about-content {
+    flex: 1;
+    display: block; /* Assure l'affichage en bloc normal */
+    width: 100%; /* Force la largeur à 100% de son conteneur */
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
+
+.about-text {
+    color: var(--color-muted);
+    width: 100%; /* Assure que le texte prend toute la largeur */
+    display: block; /* Affichage en bloc */
+}
+
+.lead-text {
+    font-size: 1.3rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* Section compétences */
+.skills-section {
+    padding: 100px 8%;
+    background-color: var(--color-card);
+}
+
+.skills-container {
+    display: flex;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+.skill-category {
+    flex: 1;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.skill-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-item {
+    width: 100%;
+}
+
+.skill-name {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.skill-bar {
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+    border-radius: 3px;
+    transition: width 1s ease;
+}
+
+/* Section valeurs */
+.values-section {
+    padding: 100px 8%;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.value-card {
+    background-color: var(--color-card);
+    padding: 40px 30px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all var(--transition-medium);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+}
+
+.value-svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--color-accent);
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    color: var(--color-muted);
+}
+
+/* Section parcours */
+.journey-section {
+    padding: 100px 8%;
+    background-color: var(--color-card);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto 0;
+    padding-left: 50px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 5px;
+    left: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-date {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-accent);
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: var(--color-muted);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    color: var(--color-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-size: 1.2rem;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .about-image {
+        max-width: 100%;
+    }
+    
+    .image-placeholder {
+        height: 400px;
+    }
+
+    .skills-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .page-title {
+        font-size: 3rem;
+    }
+    
+    .about-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .lead-text {
+        font-size: 1.1rem;
+    }
+    
+    .image-placeholder {
+        height: 300px;
+    }
+}

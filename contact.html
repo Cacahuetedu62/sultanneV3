@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sultanne</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="contact-page">
+    <!-- Overlay d'arrière-plan avec effet de particules subtil -->
+    <div class="particles-overlay"></div>
+    
+    <!-- Logo et Navigation principale -->
+    <header>
+        <div class="logo-container">
+            <img src="images/LOGO BLANC - SULTANNE - SVG - FOND TRANSPARENT.svg" alt="Sultanne" class="logo">
+        </div>
+        
+        <nav class="main-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">Qui suis-je</a></li>
+                <li class="active"><a href="contact.html">Contact</a></li>
+                <li><a href="actualites.php">Le blog</a></li>
+                <li><a href="informationsLegales.html">Informations légales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main>       
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Parlons de votre projet</h2>
+                    <p class="contact-intro">
+                        Vous avez un projet en tête ? Une idée que vous souhaitez concrétiser ? Je serais ravie de vous accompagner dans sa réalisation. Contactez-moi en remplissant le formulaire ci-contre ou en utilisant les coordonnées ci-dessous.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" class="method-svg">
+                                    <path d="M20,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V6C22,4.9,21.1,4,20,4z M20,8l-8,5L4,8V6l8,5l8-5V8z"/>
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <h3>Email</h3>
+                                <a href="mailto:contact@sultanne.fr">contact@sultanne.fr</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" class="method-svg">
+                                    <path d="M6.62,10.79c1.44,2.83,3.76,5.14,6.59,6.59l2.2-2.2c0.27-0.27,0.67-0.36,1.02-0.24c1.12,0.37,2.33,0.57,3.57,0.57 c0.55,0,1,0.45,1,1V20c0,0.55-0.45,1-1,1c-9.39,0-17-7.61-17-17c0-0.55,0.45-1,1-1h3.5c0.55,0,1,0.45,1,1 c0,1.25,0.2,2.45,0.57,3.57c0.11,0.35,0.03,0.74-0.25,1.02L6.62,10.79z"/>
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <h3>Téléphone</h3>
+                                <a href="tel:+33600000000">06 62 37 ** **</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" class="method-svg">
+                                    <path d="M12,2C8.13,2,5,5.13,5,9c0,5.25,7,13,7,13s7-7.75,7-13C19,5.13,15.87,2,12,2z M12,11.5c-1.38,0-2.5-1.12-2.5-2.5 s1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5S13.38,11.5,12,11.5z"/>
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <h3>Localisation</h3>
+                                <p>Bapaume 62450</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h3>Retrouvez-moi sur Facebook</h3>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=61571421057061" class="social-icon">
+                                <svg viewBox="0 0 24 24" class="social-svg facebook">
+                                    <path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2 c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form" action="process-contact.php" method="post">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone (optionnel)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="privacy" required>
+                                <span class="checkmark"></span>
+                                J'accepte que mes données soient utilisées pour me recontacter
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6Lfyof8qAAAAAJTohXnx6TBwgItq_U7_fWb5i2wE"></div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            <span>Envoyer le message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+       
+        <section class="faq-section">
+            <h2 class="section-title">Questions <span class="highlight">fréquentes</span></h2>
+        
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment se déroule un projet web avec moi ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        Notre collaboration débute par une discussion approfondie afin de cerner précisément vos besoins et objectifs. Je vous propose ensuite un devis détaillé, accompagné d'un planning clair et précis. Après validation, je démarre la conception et le développement, en vous tenant informé à chaque étape et en recueillant vos retours. Une fois le projet terminé, je vous fournis une formation complète à l'utilisation de votre nouveau site si cela s'avère nécessaire (notamment si vous disposez d'une interface vous permettant de modifier vous-même le contenu), avec des supports imprimables et des notices d'utilisation personnalisées                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quels sont mes délais de réalisation ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les délais varient en fonction de la complexité du projet. Un site vitrine simple prend généralement 3 à 4 semaines, tandis qu'un projet plus complexe peut nécessiter 2 à 3 mois. Je m'engage à vous fournir un planning détaillé dès le début de notre collaboration.</p>
+                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Proposez-vous des services de maintenance ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, je propose des forfaits de maintenance sur mesure, adaptés aux spécificités de chaque site web. Chaque projet étant unique, chaque forfait est personnalisé pour répondre au mieux à vos besoins.</p>
+                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Travaillez-vous avec des clients à distance ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Je collabore avec des clients partout en France, en utilisant tous les outils de communication modernes à ma disposition : Facebook, Messenger, WhatsApp... Bien qu'une rencontre physique puisse être très productive, un appel téléphonique planifié peut être tout aussi efficace lorsque les deux parties sont pleinement disponibles.</p>
+                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quels sont mes tarifs ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Je privilégie une tarification journalière, car chaque projet est unique et demande une approche personnalisée. Pour les particuliers et les projets axés sur les réseaux sociaux, les tarifs sont généralement standardisés en raison du faible nombre de retouches nécessaires.</p>
+                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Que se passe-t-il si je ne suis pas satisfait des propositions initiales ? Dois-je payer quand même ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pas d'inquiétude ! Cette garantie s'applique spécifiquement aux supports visuels (logos, maquettes, etc.). Je vous propose généralement 3 idées radicalement différentes pour cerner au mieux votre vision. Une fois cette direction affinée, je passe aux détails. Pour chaque support numérique (imprimable ou non), vous bénéficiez de deux modifications mineures gratuites. D'éventuelles retouches supplémentaires peuvent rallonger les délais, mais n'affecteront pas le prix initialement convenu.</p>
+                    </div>
+                </div>
+        
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Réalisez-vous des sites e-commerce ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Non, je ne propose pas la création de sites e-commerce pour le moment. Je suis spécialisé dans les sites vitrine, les portfolios en ligne et les sites événementiels.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mon site web peut-il être optimisé pour les moteurs de recherche (SEO) ?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Je peux optimiser votre site pour le référencement naturel (SEO), c'est-à-dire l'ensemble des techniques visant à améliorer la visibilité de votre site dans les résultats de recherche, de manière organique. Concrètement, cela signifie que je travaille sur le contenu, les balises, les fichiers, pour aider les moteurs de recherche à comprendre et à indexer votre site. Je n'utilise pas de techniques d'achat de mots-clés ou de liens sponsorisés. Cependant, il est important de comprendre qu'un site optimisé ne remontera pas en haut de la liste si personne ne l'alimente régulièrement avec du contenu de qualité. Le SEO est un travail de longue haleine qui nécessite un effort continu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/LOGO BLANC - SULTANNE - SVG - FOND TRANSPARENT.svg" alt="Sultanne">
+            </div>
+            
+            <div class="footer-links">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">Qui suis-je</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="actualites.php">Le blog</a></li>
+                    <li><a href="informationsLegales.html">Informations légales</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <a href="mailto:contact@sultanne.fr">contact@sultanne.fr</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sultanne. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Ignorer le fichier .env
+.env
+
+# Ignorer le fichier lib/config.php
+lib/config.php
