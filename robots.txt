@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+Disallow: /vendor/
+Sitemap: https://sultanne.fr/sitemap.xml

@@ -388,6 +388,8 @@
     font-size: 14px;
 }
 
+
+/* Styles pour les messages d'erreur */
 .form-errors {
     background-color: #ffebee;
     border-left: 4px solid #f44336;
@@ -396,25 +398,33 @@
     border-radius: 4px;
     color: #b71c1c;
 }
-
+.form-success {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #1b5e20;
+}
 .form-errors ul {
     margin: 10px 0 0 20px;
     padding: 0;
 }
-
-.success-message {
-    background-color: #e8f5e9;
-    border-left: 4px solid #4caf50;
-    padding: 15px;
-    border-radius: 4px;
-    color: #1b5e20;
+.error-field {
+    border-color: #f44336 !important;
+    background-color: #fff8f8;
 }
-
-.error-message {
-    background-color: #ffebee;
-    border-left: 4px solid #f44336;
-    padding: 15px;
+.form-group.error-field .checkmark {
+    border-color: #f44336 !important;
+}
+.g-recaptcha.error-field {
+    border: 1px solid #f44336;
     border-radius: 4px;
-    color: #b71c1c;
+    padding: 5px;
+}
+.field-error {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
