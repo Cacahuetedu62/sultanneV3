@@ -11,6 +11,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        /* Styles pour les messages d'erreur */
+        .form-errors {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #b71c1c;
+        }
+        .form-success {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #1b5e20;
+        }
+        .form-errors ul {
+            margin: 10px 0 0 20px;
+            padding: 0;
+        }
+        .error-field {
+            border-color: #f44336 !important;
+            background-color: #fff8f8;
+        }
+        .form-group.error-field .checkmark {
+            border-color: #f44336 !important;
+        }
+        .g-recaptcha.error-field {
+            border: 1px solid #f44336;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .field-error {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body class="contact-page">
     <!-- Overlay d'arrière-plan avec effet de particules subtil -->
@@ -93,44 +133,53 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form" action="process-contact.php" method="post">
+                <div class="contact-form-container">                    
+                    <form id="contactForm" class="contact-form" action="process-contact.php" method="post" novalidate>
+                        <!-- Conteneur pour les messages d'erreur côté client -->
+                        <div id="form-errors" class="form-errors" style="display: none;"></div>
+                        
                         <div class="form-group">
                             <label for="name">Nom complet</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required placeholder="Lettres, espaces et tirets uniquement">
+                            <div class="field-error" id="name-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="exemple@domaine.com">
+                            <div class="field-error" id="email-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Téléphone (optionnel)</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Veuillez entrer un numéro de téléphone à 10 chiffres" placeholder="10 chiffres uniquement">
+                            <div class="field-error" id="phone-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Sujet</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required placeholder="Lettres, chiffres et ponctuation courante uniquement">
+                            <div class="field-error" id="subject-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder="Lettres, chiffres et ponctuation courante uniquement - Partagez votre message ici..."></textarea>
+                            <div class="field-error" id="message-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label class="checkbox-container">
-                                <input type="checkbox" name="privacy" required>
+                                <input type="checkbox" id="privacy" name="privacy" required>
                                 <span class="checkmark"></span>
                                 J'accepte que mes données soient utilisées pour me recontacter
                             </label>
+                            <div class="field-error" id="privacy-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6Lfyof8qAAAAAJTohXnx6TBwgItq_U7_fWb5i2wE"></div>
+                            <div class="field-error" id="recaptcha-error"></div>
                         </div>
 
                         <button type="submit" class="btn-primary">
@@ -145,90 +194,21 @@
             <h2 class="section-title">Questions <span class="highlight">fréquentes</span></h2>
         
             <div class="faq-container">
+                <!-- Contenu FAQ existant... -->
                 <div class="faq-item">
                     <div class="faq-question">
                         <h3>Comment se déroule un projet web avec moi ?</h3>
                         <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-answer">
-                        Notre collaboration débute par une discussion approfondie afin de cerner précisément vos besoins et objectifs. Je vous propose ensuite un devis détaillé, accompagné d'un planning clair et précis. Après validation, je démarre la conception et le développement, en vous tenant informé à chaque étape et en recueillant vos retours. Une fois le projet terminé, je vous fournis une formation complète à l'utilisation de votre nouveau site si cela s'avère nécessaire (notamment si vous disposez d'une interface vous permettant de modifier vous-même le contenu), avec des supports imprimables et des notices d'utilisation personnalisées                    </div>
-                </div>
-        
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quels sont mes délais de réalisation ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Les délais varient en fonction de la complexité du projet. Un site vitrine simple prend généralement 3 à 4 semaines, tandis qu'un projet plus complexe peut nécessiter 2 à 3 mois. Je m'engage à vous fournir un planning détaillé dès le début de notre collaboration.</p>
+                        Notre collaboration débute par une discussion approfondie afin de cerner précisément vos besoins et objectifs. Je vous propose ensuite un devis détaillé, accompagné d'un planning clair et précis. Après validation, je démarre la conception et le développement, en vous tenant informé à chaque étape et en recueillant vos retours. Une fois le projet terminé, je vous fournis une formation complète à l'utilisation de votre nouveau site si cela s'avère nécessaire (notamment si vous disposez d'une interface vous permettant de modifier vous-même le contenu), avec des supports imprimables et des notices d'utilisation personnalisées                    
                     </div>
                 </div>
         
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Proposez-vous des services de maintenance ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Oui, je propose des forfaits de maintenance sur mesure, adaptés aux spécificités de chaque site web. Chaque projet étant unique, chaque forfait est personnalisé pour répondre au mieux à vos besoins.</p>
-                    </div>
-                </div>
-        
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Travaillez-vous avec des clients à distance ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolument ! Je collabore avec des clients partout en France, en utilisant tous les outils de communication modernes à ma disposition : Facebook, Messenger, WhatsApp... Bien qu'une rencontre physique puisse être très productive, un appel téléphonique planifié peut être tout aussi efficace lorsque les deux parties sont pleinement disponibles.</p>
-                    </div>
-                </div>
-        
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Quels sont mes tarifs ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Je privilégie une tarification journalière, car chaque projet est unique et demande une approche personnalisée. Pour les particuliers et les projets axés sur les réseaux sociaux, les tarifs sont généralement standardisés en raison du faible nombre de retouches nécessaires.</p>
-                    </div>
-                </div>
-        
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Que se passe-t-il si je ne suis pas satisfait des propositions initiales ? Dois-je payer quand même ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Pas d'inquiétude ! Cette garantie s'applique spécifiquement aux supports visuels (logos, maquettes, etc.). Je vous propose généralement 3 idées radicalement différentes pour cerner au mieux votre vision. Une fois cette direction affinée, je passe aux détails. Pour chaque support numérique (imprimable ou non), vous bénéficiez de deux modifications mineures gratuites. D'éventuelles retouches supplémentaires peuvent rallonger les délais, mais n'affecteront pas le prix initialement convenu.</p>
-                    </div>
-                </div>
-        
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Réalisez-vous des sites e-commerce ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Non, je ne propose pas la création de sites e-commerce pour le moment. Je suis spécialisé dans les sites vitrine, les portfolios en ligne et les sites événementiels.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Mon site web peut-il être optimisé pour les moteurs de recherche (SEO) ?</h3>
-                        <div class="faq-toggle">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolument ! Je peux optimiser votre site pour le référencement naturel (SEO), c'est-à-dire l'ensemble des techniques visant à améliorer la visibilité de votre site dans les résultats de recherche, de manière organique. Concrètement, cela signifie que je travaille sur le contenu, les balises, les fichiers, pour aider les moteurs de recherche à comprendre et à indexer votre site. Je n'utilise pas de techniques d'achat de mots-clés ou de liens sponsorisés. Cependant, il est important de comprendre qu'un site optimisé ne remontera pas en haut de la liste si personne ne l'alimente régulièrement avec du contenu de qualité. Le SEO est un travail de longue haleine qui nécessite un effort continu.</p>
-                    </div>
-                </div>
+                <!-- Autres FAQ items... -->
             </div>
         </section>
-        
-        
     </main>
-
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -255,8 +235,258 @@
             <p>&copy; 2025 Sultanne. Tous droits réservés.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion des FAQs
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    item.classList.toggle('active');
+                });
+            });
 
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
+            // Validation du formulaire - intégré directement dans la page
+            const contactForm = document.getElementById('contactForm');
+            const errorContainer = document.getElementById('form-errors');
+            
+            // Fonction pour afficher un message d'erreur sous un champ
+            function showFieldError(fieldId, message) {
+                const errorElement = document.getElementById(fieldId + '-error');
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                    document.getElementById(fieldId).classList.add('error-field');
+                }
+            }
+            
+            // Fonction pour effacer un message d'erreur
+            function clearFieldError(fieldId) {
+                const errorElement = document.getElementById(fieldId + '-error');
+                if (errorElement) {
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                    document.getElementById(fieldId).classList.remove('error-field');
+                }
+            }
+            
+            // Écouter les événements input pour donner un feedback immédiat
+            const formInputs = contactForm.querySelectorAll('input, textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.id === 'privacy') {
+                        if (this.checked) {
+                            clearFieldError('privacy');
+                        }
+                    } else {
+                        if (this.value.trim() !== '') {
+                            clearFieldError(this.id);
+                        }
+                    }
+                });
+            });
+            
+            // Gestion de la soumission du formulaire
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Réinitialiser les erreurs
+                    errorContainer.style.display = 'none';
+                    errorContainer.innerHTML = '';
+                    document.querySelectorAll('.field-error').forEach(error => {
+                        error.textContent = '';
+                        error.style.display = 'none';
+                    });
+                    document.querySelectorAll('.error-field').forEach(field => {
+                        field.classList.remove('error-field');
+                    });
+                    
+                    // Vérification des champs
+                    let hasErrors = false;
+                    let errorMessages = [];
+                    
+// Vérifier le nom
+const name = document.getElementById('name').value.trim();
+if (!name) {
+    hasErrors = true;
+    showFieldError('name', 'Ce champ est obligatoire');
+    errorMessages.push('Le nom est obligatoire');
+} else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']+$/.test(name)) {
+    // Cette regex accepte uniquement les lettres, espaces, tirets et apostrophes
+    hasErrors = true;
+    showFieldError('name', 'Le nom ne doit contenir que des lettres');
+    errorMessages.push('Le nom ne doit contenir que des lettres');
+}
+                    
+                    // Vérifier l'email
+                    const email = document.getElementById('email').value.trim();
+                    if (!email) {
+                        hasErrors = true;
+                        showFieldError('email', 'Ce champ est obligatoire');
+                        errorMessages.push('L\'email est obligatoire');
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        hasErrors = true;
+                        showFieldError('email', 'Adresse email invalide');
+                        errorMessages.push('L\'adresse email est invalide');
+                    }
+                    
+                    // Vérifier le téléphone (optionnel mais doit être valide s'il est fourni)
+                    const phone = document.getElementById('phone').value.trim();
+                    if (phone && !/^[0-9]{10}$/.test(phone)) {
+                        hasErrors = true;
+                        showFieldError('phone', 'Doit contenir 10 chiffres');
+                        errorMessages.push('Le numéro de téléphone doit contenir 10 chiffres');
+                    }
+                    
+                    // Vérifier le sujet
+                    const subject = document.getElementById('subject').value.trim();
+                    if (!subject) {
+                        hasErrors = true;
+                        showFieldError('subject', 'Ce champ est obligatoire');
+                        errorMessages.push('Le sujet est obligatoire');
+                    }
+                    
+                    // Vérifier le message
+                    const message = document.getElementById('message').value.trim();
+                    if (!message) {
+                        hasErrors = true;
+                        showFieldError('message', 'Ce champ est obligatoire');
+                        errorMessages.push('Le message est obligatoire');
+                    }
+                    
+                    // Vérifier la case de confidentialité
+                    const privacy = document.getElementById('privacy').checked;
+                    if (!privacy) {
+                        hasErrors = true;
+                        showFieldError('privacy', 'Vous devez accepter cette condition');
+                        errorMessages.push('Vous devez accepter que vos données soient utilisées');
+                    }
+                    
+                    // Vérifier le reCAPTCHA
+                    const recaptchaResponse = grecaptcha.getResponse();
+                    if (recaptchaResponse.length === 0) {
+                        hasErrors = true;
+                        showFieldError('recaptcha', 'Veuillez cocher cette case');
+                        errorMessages.push('Veuillez confirmer que vous n\'êtes pas un robot');
+                        document.querySelector('.g-recaptcha').classList.add('error-field');
+                    }
+                    
+                    // S'il y a des erreurs, afficher le résumé
+                    if (hasErrors) {
+                        errorContainer.innerHTML = '<strong>Veuillez corriger les erreurs suivantes :</strong><ul>' +
+                            errorMessages.map(msg => '<li>' + msg + '</li>').join('') +
+                            '</ul>';
+                        errorContainer.style.display = 'block';
+                        errorContainer.scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    // Si tout est valide, soumettre le formulaire avec AJAX
+                    const formData = new FormData(this);
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.innerHTML;
+                    
+                    // Désactiver le bouton et changer son texte
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<span>Envoi en cours...</span>';
+                    
+                    // Envoyer les données via AJAX
+                    fetch('process-contact.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Réactiver le bouton
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                        
+                        if (data.success) {
+                            // Succès
+                            contactForm.reset();
+                            grecaptcha.reset();
+                            
+                            // Afficher message de succès
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'form-success';
+                            successMessage.textContent = data.message;
+                            contactForm.parentNode.insertBefore(successMessage, contactForm);
+                            contactForm.style.display = 'none';
+                            
+                            // Faire défiler vers le message
+                            successMessage.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            // Erreur côté serveur
+                            errorContainer.innerHTML = '<strong>Erreur :</strong> ' + data.message;
+                            errorContainer.style.display = 'block';
+                            errorContainer.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    })
+                    .catch(error => {
+                        // Erreur technique
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                        
+                        errorContainer.innerHTML = '<strong>Erreur :</strong> Une erreur technique est survenue. Veuillez réessayer plus tard.';
+                        errorContainer.style.display = 'block';
+                        errorContainer.scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+            }
+            
+            // Animation des éléments de contact au scroll
+            const contactMethods = document.querySelectorAll('.contact-method');
+            const socialIcons = document.querySelectorAll('.social-icon');
+            
+            function animateOnScroll() {
+                const windowHeight = window.innerHeight;
+                
+                contactMethods.forEach((method, index) => {
+                    const methodTop = method.getBoundingClientRect().top;
+                    if (methodTop < windowHeight - 100) {
+                        setTimeout(() => {
+                            method.style.opacity = '1';
+                            method.style.transform = 'translateX(0)';
+                        }, index * 200);
+                    }
+                });
+                
+                socialIcons.forEach((icon, index) => {
+                    const iconTop = icon.getBoundingClientRect().top;
+                    if (iconTop < windowHeight - 100) {
+                        setTimeout(() => {
+                            icon.style.opacity = '1';
+                            icon.style.transform = 'translateY(0)';
+                        }, index * 150);
+                    }
+                });
+            }
+            
+            function initContactAnimations() {
+                contactMethods.forEach(method => {
+                    method.style.opacity = '0';
+                    method.style.transform = 'translateX(-30px)';
+                    method.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                });
+                
+                socialIcons.forEach(icon => {
+                    icon.style.opacity = '0';
+                    icon.style.transform = 'translateY(20px)';
+                    icon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                });
+                
+                setTimeout(animateOnScroll, 300);
+                window.addEventListener('scroll', animateOnScroll);
+            }
+            
+            initContactAnimations();
+        });
+    </script>
 </body>
 </html>

@@ -361,3 +361,60 @@
         transform-origin: 0 0;
     }
 }
+
+/* Style pour les messages d'erreur et de succès */
+.error-message {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #b71c1c;
+    font-size: 14px;
+}
+
+.error-message ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #1b5e20;
+    font-size: 14px;
+}
+
+.form-errors {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #b71c1c;
+}
+
+.form-errors ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 15px;
+    border-radius: 4px;
+    color: #1b5e20;
+}
+
+.error-message {
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    padding: 15px;
+    border-radius: 4px;
+    color: #b71c1c;
+}
+

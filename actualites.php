@@ -157,7 +157,7 @@ $articles = $stmt->fetchAll();
     </section>
 
 
-    <section class="newsletter-section">
+    <section class="newsletter-section" id="newsletter">
     <div class="container">
         <div class="newsletter-container">
             <div class="newsletter-content">
