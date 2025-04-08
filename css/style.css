@@ -278,17 +278,17 @@ header.scrolled .logo {
     background-position: center;
     opacity: 0.7;
     filter: brightness(0.5) contrast(1.2);
-    transform: scale(1.05);
-    animation: subtle-zoom 20s infinite alternate ease-in-out;
-    z-index: 1; /* Une valeur faible */
+    transform: scale(1.0);
+    animation: subtle-zoom 3s infinite alternate ease-in-out; /* Très rapide: 3 secondes */
+    z-index: 1;
 }
 
 @keyframes subtle-zoom {
     0% {
-        transform: scale(1.05);
+        transform: scale(1.0);
     }
     100% {
-        transform: scale(1.15);
+        transform: scale(1.4); /* Zoom très prononcé */
     }
 }
 
