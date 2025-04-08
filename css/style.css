@@ -41,10 +41,6 @@ a {
     transition: color var(--transition-fast);
 }
 
-a:hover {
-    color: var(--color-accent);
-}
-
 ul {
     list-style: none;
 }
@@ -301,47 +297,6 @@ header.scrolled .logo {
     margin-bottom: 40px;
 }
 
-
-
-.btn-primary, .btn-outline {
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 2px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background-color: var(--color-accent);
-    color: #000;
-    border: none;
-}
-
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 62, 108, 0.4);
-}
-
-.btn-primary:hover::after {
-    left: 100%;
-}
-
 .btn-outline {
     background-color: transparent;
     color: white;
@@ -426,30 +381,6 @@ header.scrolled .logo {
     justify-content: center;
     gap: 10px;
     margin-top: 30px;
-}
-
-.btn-primary, .btn-outline {
-    display: inline-block;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    transition: all var(--transition-medium);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background-color: var(--color-accent);
-    color: var(--color-text);
-}
-
-.btn-primary:hover {
-    background-color: #ff1a4f;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 62, 108, 0.3);
 }
 
 .btn-outline {

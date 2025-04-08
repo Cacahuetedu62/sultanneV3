@@ -15,7 +15,7 @@ $total_pages = ceil($total_articles / $articles_par_page);
 
 // Requête pour récupérer les articles
 $query = "SELECT id, titre, contenu, image, date_creation 
-          FROM articles 
+          FROM articles
           ORDER BY date_creation DESC 
           LIMIT :limit OFFSET :offset";
 
