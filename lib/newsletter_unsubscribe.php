@@ -3,8 +3,13 @@
 require_once 'config.php';
 
 // Validation du token
-$token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
-if (!$token || strlen($token) !== 64) {
+$token = filter_input(INPUT_GET, 'token', FILTER_VALIDATE_REGEXP, [
+    'options' => [
+        'regexp' => '/^[a-f0-9]{64}$/' // Token hexadécimal de 64 caractères
+    ]
+]);
+
+if (!$token) {
     die('Token invalide');
 }
 

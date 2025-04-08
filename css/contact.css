@@ -99,38 +99,6 @@
     font-size: 1.2rem;
 }
 
-.social-icons {
-    display: flex;
-    gap: 20px;
-}
-
-.social-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--color-card);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all var(--transition-medium);
-}
-
-.social-svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--color-muted);
-    transition: fill var(--transition-fast);
-}
-
-.social-icon:hover {
-    transform: translateY(-5px);
-    background-color: var(--color-accent);
-    box-shadow: 0 5px 15px rgba(255, 62, 108, 0.3);
-}
-
-.social-icon:hover .social-svg {
-    fill: white;
-}
 
 /* Formulaire de contact */
 .contact-form {

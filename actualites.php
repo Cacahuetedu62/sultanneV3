@@ -228,7 +228,7 @@ $articles = $stmt->fetchAll();
                     </div>
                 <?php endif; ?>
                 
-                <form action="lib/newsletter_subscribe.php" method="post" class="newsletter-form">
+                <form action="lib/newsletter_subscribe.php" method="post" class="newsletter-form" id="newsletter-form">
                     <!-- Protection CSRF -->
                     <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(bin2hex(random_bytes(32))); ?>">
                     
@@ -252,6 +252,7 @@ $articles = $stmt->fetchAll();
                         <label for="consent">J'accepte de recevoir la newsletter et comprends que je peux me désinscrire à tout moment</label>
                     </div>
                 </form>
+                <div id="newsletter-message"></div>                
             </div>
         </div>
     </div>
@@ -291,5 +292,30 @@ $articles = $stmt->fetchAll();
 
     <!-- Script JS minimal et efficace -->
     <script src="js/script.js"></script>
+    <script>
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var form = this;
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        var messageDiv = document.getElementById('newsletter-message');
+        
+        if (data.success) {
+            messageDiv.innerHTML = '<div class="newsletter-success">' + data.message + '</div>';
+            form.reset();
+        } else {
+            messageDiv.innerHTML = '<div class="newsletter-error">' + data.message + '</div>';
+        }
+    });
+});
+</script>
+
 </body>
 </html>

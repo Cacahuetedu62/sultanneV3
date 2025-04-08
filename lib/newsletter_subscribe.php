@@ -1,9 +1,6 @@
 <?php
-
 session_start();
 require_once 'config.php';
-
-
 require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -36,11 +33,21 @@ function loadEnv($path) {
 
 loadEnv(__DIR__ . '/../.env');
 
+
+
+
+
 // Vérification de la méthode HTTP
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../actualites.php#newsletter');
+    echo json_encode([
+        'success' => false, 
+        'message' => 'Méthode non autorisée'
+    ]);
     exit;
-}
+ }
+
+
+
 
 // Protection anti-spam (honeypot)
 if (!empty($_POST['website'])) {
@@ -70,11 +77,13 @@ try {
     $check_stmt->execute();
     
     if ($check_stmt->rowCount() > 0) {
-        // L'email existe déjà
-        header('Location: ../actualites.php?newsletter=exists#newsletter');
+        echo json_encode([
+            'success' => false,
+            'message' => 'Cet email est déjà inscrit à la newsletter'
+        ]);
         exit;
     }
-    
+
     // Génération d'un token de désabonnement
     $unsubscribe_token = bin2hex(random_bytes(32));
     $subscription_date = date('Y-m-d H:i:s');
@@ -159,20 +168,27 @@ try {
         
         $mail->send();
         
-        // Redirection avec message de succès et ancre pour position
-        header('Location: ../actualites.php?newsletter=success#newsletter');
+        // Message de succès
+        echo json_encode([
+            'success' => true,
+            'message' => 'Merci pour votre inscription !'
+        ]);
         exit;
+
     } catch (Exception $e) {
-        // Journalisation de l'erreur d'envoi d'email
-        error_log('Erreur envoi email newsletter: ' . $mail->ErrorInfo);
-        // Continuer sans bloquer l'inscription même si l'email n'a pas été envoyé
-        header('Location: ../actualites.php?newsletter=success#newsletter');
+        // Message d'erreur d'envoi d'email
+        echo json_encode([
+            'success' => false,
+            'message' => 'Erreur lors de l\'envoi de l\'email de confirmation'
+        ]);
         exit;
     }
     
 } catch (PDOException $e) {
-    // Journalisation de l'erreur
-    error_log('Erreur newsletter: ' . $e->getMessage());
-    header('Location: ../actualites.php?newsletter=error#newsletter');
+    // Message d'erreur de base de données
+    echo json_encode([
+        'success' => false,
+        'message' => 'Erreur lors de l\'inscription'
+    ]);
     exit;
 }

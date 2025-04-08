@@ -94,12 +94,133 @@ header.scrolled {
 
 .logo {
     height: 150px;
-    transition: all var(--transition-medium);
 }
 
 header.scrolled .logo {
     height: 40px;
 }
+
+
+
+@media screen {
+    @media (max-width: 1440px) {
+        /* Réorganisation du header */
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 5%;
+            position: relative;
+            z-index: 100; /* S'assurer que le header reste au-dessus du hero */
+        }
+        
+        /* Logo centré avec taille préservée */
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .logo {
+            height: 200px; /* Maintenir la taille d'origine */
+        }
+        
+        /* Menu sous le logo */
+        .main-nav {
+            width: 100%;
+            padding: 5px;
+        }
+        
+        .nav-links {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        /* Légère réduction de la taille du texte */
+        .nav-links a {
+            font-size: 0.95rem;
+        }
+        
+        /* Correction pour s'assurer que le hero reste sous le header */
+        .hero-background {
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            z-index: 2;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 3;
+        }
+    }
+    
+    /* Ajustements supplémentaires pour les mobiles, mais en gardant le logo assez grand */
+    @media (max-width: 768px) {
+        /* Taille du logo légèrement réduite mais encore visible */
+        .logo {
+            height: 150px; /* Augmenté de 70px à 80px */
+        }
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Espacement réduit */
+        .nav-links {
+            gap: 15px;
+        }
+        
+        /* Taille du texte plus petite */
+        .nav-links a {
+            font-size: 0.85rem;
+        }
+        
+        /* Footer responsive */
+        .footer-content {
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+        }
+        
+        .footer-links ul {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+    }
+    
+    /* Très petits écrans */
+    @media (max-width: 480px) {
+        .logo {
+            height: 150px; /* Augmenté de 60px à 70px pour une meilleure visibilité */
+        }
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .nav-links {
+            gap: 10px;
+        }
+        
+        .nav-links a {
+            font-size: 0.8rem;
+            padding: 5px;
+        }
+    }
+}
+
+
 
 .main-nav {
     position: relative;
@@ -139,6 +260,7 @@ header.scrolled .logo {
     width: 100%;
 }
 
+
 .hero-content {
     max-width: 600px;
     margin-right: auto; /* Ajouter pour forcer l'alignement à gauche */
@@ -158,6 +280,7 @@ header.scrolled .logo {
     filter: brightness(0.5) contrast(1.2);
     transform: scale(1.05);
     animation: subtle-zoom 20s infinite alternate ease-in-out;
+    z-index: 1; /* Une valeur faible */
 }
 
 @keyframes subtle-zoom {
@@ -244,21 +367,6 @@ header.scrolled .logo {
     }
 }
 
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/images/Hero.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.7;
-    filter: brightness(0.5) contrast(1.2);
-    transform: scale(1.05);
-    animation: subtle-zoom 20s infinite alternate ease-in-out;
-}
-
 @keyframes subtle-zoom {
     0% {
         transform: scale(1.05);
@@ -301,12 +409,55 @@ header.scrolled .logo {
     background-color: transparent;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    align-items: center;    /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    margin-top: 1rem;
+}
+
+.btn-outline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: -1;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateX(-100%);
 }
 
 .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: white;
+    border-color: rgba(255, 255, 255, 0.8);
     transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-outline:hover:before {
+    width: 100%;
+    transform: translateX(0);
+}
+
+.btn-outline:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -381,19 +532,6 @@ header.scrolled .logo {
     justify-content: center;
     gap: 10px;
     margin-top: 30px;
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--color-text);
-    border: 1px solid var(--color-text);
-}
-
-.btn-outline:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
 
 .scroll-indicator {
@@ -701,111 +839,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Media Queries */
-@media (max-width: 992px) {
-    section {
-        padding: 80px 5%;
-    }
-    
-    header {
-        padding: 25px 5%;
-    }
-    
-    header.scrolled {
-        padding: 15px 5%;
-    }
-    
-    .nav-links {
-        gap: 30px;
-    }
-    
-    .glitch-text {
-        font-size: 4rem;
-    }
-    
-    .about-content {
-        flex-direction: column-reverse;
-        gap: 40px;
-    }
-    
-    .about-text .section-title {
-        text-align: center;
-    }
-    
-    .about-text p {
-        margin: 0 auto 20px;
-    }
-    
-    .learn-more {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    section {
-        padding: 60px 4%;
-    }
-    
-    header {
-        padding: 20px 4%;
-    }
-    
-    header.scrolled {
-        padding: 10px 4%;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background-color: var(--color-bg);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: all var(--transition-medium);
-        z-index: 1000;
-    }
-    
-    .nav-links.active {
-        right: 0;
-    }
-    
-    .glitch-text {
-        font-size: 3rem;
-        letter-spacing: 5px;
-    }
-    
-    .tagline {
-        font-size: 1.4rem;
-    }
-    
-    .cta-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .footer-links ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
 
 @media (max-width: 576px) {
     .glitch-text {
@@ -1072,3 +1105,5 @@ footer {
         font-size: 1rem;
     }
 }
+
+
